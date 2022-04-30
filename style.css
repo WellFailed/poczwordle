@@ -1,3 +1,7 @@
+html {
+  font-size: 18pt;
+}
+
 body {
   background-color: rgb(40, 40, 40);
   text-align: center;
@@ -12,43 +16,48 @@ a {
 }
 
 #title {
-  font-size: 37pt;
+  font-size: 1.6rem;
   color: azure;
-  letter-spacing: 6.9px;
+  letter-spacing: .3rem;
   font-weight: bold;
-  text-shadow: 0px 0px 10px red;
+  text-shadow: 0px 0px .5rem red;
+}
+
+#boards{
+  gap: 1rem;
 }
 
 .board {
   display: inline-block;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px .4rem black;
   background-color: rgb(5, 5, 29);
-  border-radius: 15px;
+  border-radius: .6rem;
   vertical-align: middle;
+  color: aliceblue;
 }
 
 .row {
-  height: 40px;
-  width: 240px;
+  height: fit-content;
+  width: 12rem;
   display: inline-flex;
   align-items: center;
-  padding: 6.9px;
+  padding: .3rem;
 
   justify-content: space-evenly;
 }
 
 .tile {
-  border-radius: 6.9px;
-  box-shadow: 0px 0px 4px gainsboro;
+  border-radius: .3rem;
+  box-shadow: 0px 0px .2rem gainsboro;
 
   align-content: center;
-  width: 40px; height: 40px;
+  width: 2rem; height: 2rem;
   display: inline-flex;
   background-color: rgb(69, 69, 69);
 
   align-items: center;
   justify-content: center;
-  font-size: 24pt;
+  font-size: 1.3rem;
   color: lightgray;
   font-weight: bold;
 }
@@ -56,26 +65,26 @@ a {
 #keyboard {
   position: sticky;
   bottom: 0px;
-  line-height: 4px;
+  line-height: .2rem;
 }
 
 .keyboardRow {
-  width: 500px;
+  width: 25rem;
   display: flex;
   margin-left: auto; margin-right: auto;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .keyboardRowSmall {
-  width: 450px;
+  width: 22.5rem;
 }
 
 .keyboard {
   cursor: pointer;
-  border-radius: 5px;
-  height: 60px;
-  min-width: 45px;
-  font-size: 30pt;
+  border-radius: .25rem;
+  height: 3rem;
+  min-width: 2.25rem;
+  font-size: 1.5rem;
   color: aliceblue;
   background-color: rgb(2, 2, 2);
   display: inline-block;
@@ -83,25 +92,25 @@ a {
 }
 
 #delete {
-  border-radius: 50px 10px 10px 50px;
-  width: 70px;
-  padding-left: 11px;
+  border-radius: 2.5rem .5rem .5rem 2.5rem;
+  width: 3.5rem;
+  padding-left: .55rem;
 }
 
 #submit {
-  border-radius: 10px 50px 50px 10px;
-  width: 70px;
+  border-radius: .5rem 2.5rem 2.5rem .5rem;
+  width: 3.5rem;
 }
 
 #message {
   position: fixed;
-  width: 450px;
-  height: 150px;
-  box-shadow: 0px 0px 2px black;
-  font-size: 30pt;
-  text-shadow: 0px 0px 2px red;
+  width: 96vw;
+  height: 7.5rem;
+  box-shadow: 0px 0px .1rem black;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px .1rem red;
   color: azure;
-  right: -460px; bottom: 10px;
+  right: -98vw; top: 2vw;
   background-color: rgb(35,35,35);
 
   display: flex;
@@ -110,7 +119,7 @@ a {
   align-items: center;
 
   animation-timing-function: linear;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-name: msg;
 }
@@ -121,11 +130,11 @@ a {
 
 @keyframes msg {
   0%, 100% {
-    right: -460px;
+    right: -98vw;
     opacity: 0;
   }
   15%, 85% {
-    right: 10px;
+    right: 2vw;
     opacity: 1;
   }
 }
@@ -136,10 +145,14 @@ a {
 
 .halfGood {
   background-color: gold;
+  color: black;
+  box-shadow: 0px 0px .2rem gold;
 }
 
 .good {
   background-color: rgb(40, 156, 40);
+  color: black;
+  box-shadow: 0px 0px .2rem rgb(40, 156, 40);
 }
 
 #more{
@@ -147,23 +160,25 @@ a {
 
   display: flex;
 
-  min-width: 80px; min-height: 0px;
+  min-width: 3rem; min-height: 0px;
+
+  padding-left: .5rem; padding-right: .5rem;
 
   right: 0.5vw;
   top: 0.5vh;
 
-  padding-top: 80px;
+  padding-top: 4rem;
   background-color: rgb(40, 40, 40);
-  box-shadow: 0px 0px 3px goldenrod;
-  border: 1px solid gold;
-  border-radius: 20px;
+  box-shadow: 0px 0px .15rem goldenrod;
+  border: .05rem solid gold;
+  border-radius: 1rem;
 
   overflow: hidden;
 }
 
 #more-info {
   width: 100%;
-  font-size: 25pt;
+  font-size: 1.25rem;
   display: flexbox;
 
   color: antiquewhite;
@@ -175,13 +190,13 @@ a {
 #more button {
   position: absolute;
 
-  right: 10px; top: 10px;
+  right: .5rem; top: .5rem;
 
   cursor: pointer;
-  border-radius: 25px;
-  height: 60px;
-  width: 60px;
-  font-size: 30pt;
+  border-radius: 1.25rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
   color: aliceblue;
   background-color: rgb(2, 2, 2);
   display: flex;
@@ -195,28 +210,29 @@ a {
   position: absolute;
   top: 0.5vh;
   left: 0.5vw;
+  font-size: .5rem;
 }
 
 #gameSeed {
   position: fixed;
-  width: 450px;
-  height: 150px;
-  box-shadow: 0px 0px 2px black;
-  font-size: 30pt;
-  text-shadow: 0px 0px 2px red;
+  width: 22.5rem;
+  height: 7.5rem;
+  box-shadow: 0px 0px .1rem black;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px .1rem red;
   color: azure;
-  left: 10px; bottom: 10px;
+  left: .5rem; bottom: .5rem;
   background-color: rgb(35,35,35);
 }
 
 #gameSeed input {
-  width: 200px;
+  width: 10rem;
 }
 
 #gameSeed button, #gameSeed input {
-  border-radius: 6.9px;
+  border-radius: .3rem;
   background-color: rgb(69, 69, 69);
-  font-size: 14pt;
+  font-size: .7rem;
   color: lightgray;
   font-weight: bold;
   text-align: center;
@@ -228,4 +244,26 @@ a {
 
 .buttonOff{
   background-color: gray;
+}
+
+.collapsed {
+  height: 1.3rem;
+  background-color: rgb(20, 20, 58);
+  box-shadow: none;
+}
+
+.old {
+  height: 1.3rem;
+  font-size: .85rem;
+}
+
+
+
+@media (min-width: 81.6rem){
+  #boards {
+    display: inline-flex;
+  }
+  .keyboardRow {
+    justify-content: space-between;
+  }
 }
