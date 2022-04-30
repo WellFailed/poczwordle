@@ -24,6 +24,7 @@ a {
   box-shadow: 0px 0px 10px black;
   background-color: rgb(5, 5, 29);
   border-radius: 15px;
+  vertical-align: middle;
 }
 
 .row {
@@ -133,12 +134,12 @@ a {
   animation-play-state: running;
 }
 
-.good {
-  background-color: rgb(40, 156, 40);
-}
-
 .halfGood {
   background-color: gold;
+}
+
+.good {
+  background-color: rgb(40, 156, 40);
 }
 
 #more{
@@ -223,4 +224,8 @@ a {
 
 .gone {
   display: none;
+}
+
+.buttonOff{
+  background-color: gray;
 }

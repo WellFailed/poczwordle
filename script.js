@@ -38,6 +38,7 @@ window.onload = function(){
     answers.forEach(answer=>{
       guessedAnswers.push(false)
     })
+    answers[0] = ["L","I","Z","E","L"]
     return true
   }
 
@@ -71,12 +72,6 @@ window.onload = function(){
     'T', 'U', 'W', 'Y',
     'Z', 'Ź', 'Ż'
   ]
-
-  function indexCheck(letter){
-    for(let j = 0; j<letters.length; j++){
-      if(letters[j] === letter) return j
-    }
-  }
 
   const msgBox = document.querySelector("#message")
 
@@ -132,18 +127,18 @@ window.onload = function(){
     let now
     now = Math.round(allWords.length/2)
     halving = now
-    while(i!=1000 && before!=now && letterIndex != maxTiles){
+    while(i!=allWords.length && before!=now && letterIndex != maxTiles){
       switch (true){
         case (allWords[now].charAt(letterIndex) === currentWord.join("").charAt(letterIndex)):
           letterIndex++
           break
-        case (indexCheck(allWords[now].charAt(letterIndex)) > indexCheck(currentWord.join("").charAt(letterIndex))):
+        case (letters.indexOf(allWords[now].charAt(letterIndex)) > letters.indexOf(currentWord.join("").charAt(letterIndex))):
           before = now
           halving = Math.round(halving * 0.5)
           now -= halving
           letterIndex=0
           break
-        case (indexCheck(allWords[now].charAt(letterIndex)) < indexCheck(currentWord.join("").charAt(letterIndex))):
+        case (letters.indexOf(allWords[now].charAt(letterIndex)) < letters.indexOf(currentWord.join("").charAt(letterIndex))):
           before = now
           halving = Math.round(halving * 0.5)
           now += halving
@@ -180,25 +175,56 @@ window.onload = function(){
       if(checkWord()){
         let allCorrect = true
 
+        let goodAnywhere = []
+
+        let copied = []
+
+        answers.forEach((answer, answerIndex)=>{
+          copied.push([])
+          answer.forEach(letter=>{
+            copied[answerIndex].push(letter)
+          })
+        })
+
         answers.forEach((answer, answerIndex)=>{
           if(!guessedAnswers[answerIndex])
           for(let j = 0; j<currentWord.length; j++){
             if(currentWord[j] === answer[j]){
               tiles[answerIndex][currentTry][j].classList.add("good")
+              if(goodAnywhere.indexOf(currentWord[j]) == -1) goodAnywhere.push(currentWord[j])
+              copied[answerIndex][j] = " "
             }
           }
         })
 
-        answers.forEach((answer, answerIndex)=>{
+        copied.forEach((answer, answerIndex)=>{
           if(!guessedAnswers[answerIndex])
           for(let j = 0; j<maxTiles; j++){
             R:for(let jj = 0; jj<maxTiles; jj++){
               if(answer[j] === currentWord[jj] && !tiles[answerIndex][currentTry][jj].classList.contains("good")
               && !tiles[answerIndex][currentTry][jj].classList.contains("halfGood")){
                 tiles[answerIndex][currentTry][jj].classList.add("halfGood")
+                if(goodAnywhere.indexOf(currentWord[jj]) == -1) goodAnywhere.push(currentWord[jj])
                 break R
               }
             }
+          }
+        })
+
+        console.log(goodAnywhere)
+
+        console.log(answers)
+        console.log(copied)
+
+        currentWord.forEach(letter => {
+          console.log(letter)
+          if(goodAnywhere.indexOf(letter) == -1){
+            document.querySelectorAll(".keyboard").forEach(button=>{
+              console.log(button)
+              if(button.innerText.trim() === letter){
+                button.classList.add("buttonOff")
+              }
+            })
           }
         })
 
@@ -212,13 +238,12 @@ window.onload = function(){
           }
         })
 
+        currentWord = []
+        currentTry++
         if(allCorrect){
           message("Wygrałeś/aś!")
           running = false
-        }
-        currentWord = []
-        currentTry++
-        if(currentTry == maxTries){
+        }else if(currentTry == maxTries){
           message("Przegrałeś/aś!")
           running = false
         }
