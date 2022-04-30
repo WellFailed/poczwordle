@@ -104,6 +104,29 @@ window.onload = function(){
   let currentWord = []
   let currentTry = 0
 
+  function collapseRows(){
+    tiles.forEach(board => {
+      board.forEach((row, rowIndex) => {
+        if(rowIndex > currentTry){
+          row.forEach(tile=>{
+            tile.classList.add("collapsed")
+          })
+        }else if(rowIndex < currentTry){
+          row.forEach(tile=>{
+            tile.classList.remove("collapsed")
+            tile.classList.add("old")
+          })
+        }else{
+          row.forEach(tile=>{
+            tile.classList.remove("collapsed")
+          })
+        }
+      })
+    })
+  }
+
+  collapseRows()
+
   function displayWord(){
     tiles.forEach((board, boardIndex)=>{
       if(!guessedAnswers[boardIndex])
@@ -157,7 +180,7 @@ window.onload = function(){
       displayWord()
       if(currentWord.length==maxTiles){
         if(!checkWord()){
-          message("Nie ma takiego słowa")
+          message("Słowo nie zostało zbazowane, więc prawdopodobnie nie istnieje")
         }
       }
     }
@@ -231,6 +254,7 @@ window.onload = function(){
 
         currentWord = []
         currentTry++
+        collapseRows()
         if(allCorrect){
           message("Wygrałeś/aś!")
           running = false
