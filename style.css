@@ -60,6 +60,10 @@ a {
   font-size: 1.3rem;
   color: lightgray;
   font-weight: bold;
+
+  transition: 
+  background-color 250ms ease,
+  box-shadow 250ms ease;
 }
 
 #keyboard {
@@ -89,6 +93,12 @@ a {
   background-color: rgb(2, 2, 2);
   display: inline-block;
   vertical-align: middle;
+  transition: background-color 100ms linear;
+  border-width: 1px;
+}
+
+.keyboard:active {
+  background-color: rgb(60, 60, 60);
 }
 
 #delete {
