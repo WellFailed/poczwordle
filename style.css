@@ -63,7 +63,8 @@ a {
 
   transition: 
   background-color 250ms ease,
-  box-shadow 250ms ease;
+  box-shadow 250ms ease,
+  height 250ms ease;
 }
 
 #keyboard {

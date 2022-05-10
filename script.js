@@ -105,7 +105,8 @@ window.onload = function(){
   let currentTry = 0
 
   function collapseRows(){
-    tiles.forEach(board => {
+    tiles.forEach((board, boardIndex) => {
+      if(!guessedAnswers[boardIndex])
       board.forEach((row, rowIndex) => {
         if(rowIndex > currentTry){
           row.forEach(tile=>{
